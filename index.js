@@ -7,13 +7,15 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// ============================================================
+// Vercel Serverless Handler
+// ============================================================
 app.get('/', (req, res) => {
-  res.send('Bot is alive! 🤖 Keep-alive service running.');
+  res.send('Bot is alive! 🤖 Vercel Serverless running.');
 });
 
-app.listen(PORT, () => {
-  console.log(`[Keep-Alive] Express server running on port ${PORT}`);
-});
+// Export Express app untuk Vercel
+module.exports = app;
 
 // ============================================================
 // Groq AI Setup
