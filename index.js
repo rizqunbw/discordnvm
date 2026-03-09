@@ -3,17 +3,16 @@ const { Client, GatewayIntentBits, Partials, Collection, Events, ActivityType } 
 const Groq = require('groq-sdk');
 const fs = require('fs');
 const path = require('path');
-const http = require('http');
-
-// ============================================================
-// HTTP Server (keep-alive untuk Koyeb/Render/Railway)
-// ============================================================
+const express = require('express');
+const app = express();
 const PORT = process.env.PORT || 3000;
-http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Bot is alive! 🤖');
-}).listen(PORT, () => {
-  console.log(`[Keep-Alive] HTTP server running on port ${PORT}`);
+
+app.get('/', (req, res) => {
+  res.send('Bot is alive! 🤖 Keep-alive service running.');
+});
+
+app.listen(PORT, () => {
+  console.log(`[Keep-Alive] Express server running on port ${PORT}`);
 });
 
 // ============================================================
